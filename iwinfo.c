@@ -276,8 +276,6 @@ static void rpc_iwinfo_call_hw_ht_mode(int hwmodelist)
 		return;
 
 	htmode_str = iwinfo_htmode_name(htmode);
-	fprintf(stdout, "htmode_str %s\n",
-			htmode_str);
 
 	if (htmode_str)
 	{
@@ -304,10 +302,7 @@ static void rpc_iwinfo_call_hw_ht_mode(int hwmodelist)
 	} else
 		htmode_str = hwmode_str = "unknown";
 
-	fprintf(stdout, "after if - hwmode_str %s\n",
-		hwmode_str);
-	fprintf(stdout, "after if - htmode_str %s\n",
-	htmode_str);
+
 	blobmsg_add_string(&buf, "hwmode", hwmode_str);
 	blobmsg_add_string(&buf, "htmode", htmode_str);
 }
@@ -364,8 +359,6 @@ rpc_iwinfo_info(struct ubus_context *ctx, struct ubus_object *obj,
 	rpc_iwinfo_call_encryption("encryption");
 	rpc_iwinfo_call_htmodes("htmodes");
 	hwmodes = rpc_iwinfo_call_hwmodes("hwmodes");
-	fprintf(stderr, "Number of hwmodes %i\n",
-		        hwmodes);
 
 	if (hwmodes > 0)
 		rpc_iwinfo_call_hw_ht_mode(hwmodes);
