@@ -276,6 +276,9 @@ static void rpc_iwinfo_call_hw_ht_mode(int hwmodelist)
 		return;
 
 	htmode_str = iwinfo_htmode_name(htmode);
+	fprintf(stderr, "htmode_str %s\n",
+			htmode_str);
+			
 	if (htmode_str)
 	{
 		if (iwinfo_htmode_is_ht(htmode))
@@ -357,6 +360,8 @@ rpc_iwinfo_info(struct ubus_context *ctx, struct ubus_object *obj,
 	rpc_iwinfo_call_encryption("encryption");
 	rpc_iwinfo_call_htmodes("htmodes");
 	hwmodes = rpc_iwinfo_call_hwmodes("hwmodes");
+	fprintf(stderr, "Number of hwmodes %i\n",
+		        hwmodes);
 
 	if (hwmodes > 0)
 		rpc_iwinfo_call_hw_ht_mode(hwmodes);
