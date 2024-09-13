@@ -276,7 +276,7 @@ static void rpc_iwinfo_call_hw_ht_mode(int hwmodelist)
 		return;
 
 	htmode_str = iwinfo_htmode_name(htmode);
-	fprintf(stderr, "htmode_str %s\n",
+	fprintf(stdout, "htmode_str %s\n",
 			htmode_str);
 
 	if (htmode_str)
@@ -304,9 +304,9 @@ static void rpc_iwinfo_call_hw_ht_mode(int hwmodelist)
 	} else
 		htmode_str = hwmode_str = "unknown";
 
-	fprintf(stderr, "after if - hwmode_str %s\n",
+	fprintf(stdout, "after if - hwmode_str %s\n",
 		hwmode_str);
-	fprintf(stderr, "after if - htmode_str %s\n",
+	fprintf(stdout, "after if - htmode_str %s\n",
 	htmode_str);
 	blobmsg_add_string(&buf, "hwmode", hwmode_str);
 	blobmsg_add_string(&buf, "htmode", htmode_str);
