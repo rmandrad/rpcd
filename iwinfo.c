@@ -290,20 +290,17 @@ static void rpc_iwinfo_call_hw_ht_mode(int hwmodelist)
 			blobmsg_add_string(&buf, "hwmode", hwmode_str);
 		else if (iwinfo_htmode_is_he(htmode))
 			hwmode_str = "ax";
-			blobmsg_add_string(&buf, "hwmode", hwmode_str);
+		else if (iwinfo_htmode_is_eht(htmode))
+			hwmode_str = "be";
 		else {
 			if (hwmodelist & IWINFO_80211_N)
 				hwmode_str = "n";
-				blobmsg_add_string(&buf, "hwmode", hwmode_str);
 			else if (hwmodelist & IWINFO_80211_G)
 				hwmode_str = "g";
-				blobmsg_add_string(&buf, "hwmode", hwmode_str);
 			else if (hwmodelist & IWINFO_80211_B)
 				hwmode_str = "b";
-				blobmsg_add_string(&buf, "hwmode", hwmode_str);
 			else if (hwmodelist & IWINFO_80211_A)
 				hwmode_str = "a";
-				blobmsg_add_string(&buf, "hwmode", hwmode_str);
 			else
 				hwmode_str = "unknown";
 		}
